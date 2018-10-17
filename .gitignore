@@ -1,9 +1,4 @@
 secret.txt
 .idea/*
-/.idea/
 *.iml
-.idea/workspace.xml
-/lecture-enviroment/
-lecture-enviroment/
-/lecture-enviroment/*
-lecture-enviroment/*.*
+.DS_Store 
