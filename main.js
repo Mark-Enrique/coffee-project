@@ -52,6 +52,9 @@ var coffees = [
 var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
+var selectFunction = document.getElementById("selectFunction");
+
+selectFunction.innerHTML = renderCoffee;
 
 tbody.innerHTML = renderCoffees(coffees);
 
