@@ -25,15 +25,33 @@
         </div>
 
         <div class="col-sm-6">
+            <!------------------------top form--------------------------->
             <form>
-                <label for="roast-selection"></label>
-                <select id="roast-selection">
+                <label for="roast-selection">Roast</label><br>
+                <select class="custom-select" id="roast-selection">
                     <option>all</option>
                     <option>light</option>
                     <option>medium</option>
                     <option>dark</option>
-                </select>
-                <input id="submit" type="submit" />
+                </select><br><br>
+                <label for="coffee-name-search">Coffee Name</label><br>
+                <input class="input-group" id="coffee-name-search" type="text" name="coffee-name-search"><br>
+                <input class="btn btn-primary btn-block" id="submit" type="submit">
+                <br><br>
+            </form>
+                <!--------------------bottom form------------------------>
+            <form>
+                <div class="text-center"><h3>Add a Coffee</h3></div>
+                <label for="roast-selection-bottom">Roast</label><br>
+                <select class="custom-select" id="roast-selection-bottom">
+                    <option>all</option>
+                    <option>light</option>
+                    <option>medium</option>
+                    <option>dark</option>
+                </select><br><br>
+                <label for="coffee-name-search-bottom">Coffee Name</label><br>
+                <input class="input-group" id="coffee-name-search-bottom" type="text" name="coffee-name-search"><br>
+                <input class="btn btn-primary btn-block" id="submit-bottom" type="submit">
             </form>
         </div>
     </div>
