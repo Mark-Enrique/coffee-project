@@ -1,9 +1,9 @@
 "use strict"
 
 function renderCoffee(coffee) {
-    var html = '<div class="coffee">';
-    html += '<h4>' + coffee.name + '</h4>';
-    html += '<p>' + coffee.roast + '</p>';
+    var html = '<div class="coffee col-6">';
+    html += '<div><h4>' + coffee.name + '</h4>';
+    html += '<span>' + coffee.roast + '</span></div>';
     html += '</div>';
 
     return html;
@@ -56,3 +56,4 @@ var roastSelection = document.querySelector('#roast-selection');
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+roastSelection.addEventListener('change', updateCoffees)
