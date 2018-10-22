@@ -31,6 +31,20 @@ function updateCoffees(e) {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+function updateCoffeesSearch(e) {
+    //e.preventDefault(); // don't submit the form, we just want to update the data
+    var selectedRoast = roastSelection.value;
+    var filteredCoffees = [];
+    coffees.forEach(function(coffee) {
+        if (coffee.roast === selectedRoast) {
+            filteredCoffees.push(coffee);
+        } else if (coffee.all === selectedRoast) {
+            filteredCoffees.push(coffee);
+        }
+    });
+    tbody.innerHTML = renderCoffees(filteredCoffees);
+}
+
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 var coffees = [
     {id: 1, name: 'Light City', roast: 'light', all: 'all'},
@@ -57,3 +71,44 @@ tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
 roastSelection.addEventListener('change', updateCoffees)
+
+var search = document.getElementById("coffee-name-search");
+
+search.addEventListener("keyup", updateCoffeesSearch)
+
+
+//
+// console.log(searchTest());
+
+// search.addEventListener("keyup", function() {
+//     coffees.prototype.forEach.call(els, function(el) {
+//         var values = search.value.split(' ');
+//         var display = true;
+//         for (var i = 0; i < values.length; i++) {
+//             if(el.textContent.trim().indexOf(values[i]) === -1)
+//                 display = false;
+//         }
+//
+//         el.style.display = display ? 'block' : 'none';
+//     });
+// });
+
+
+
+/* Test function
+
+var timeout = null;
+// Init a timeout variable to be used below
+
+//Listen for keystroke events
+function searchTest() {
+    search.addEventListener("keydown", function () {
+
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+            console.log('Input Value:', search.value);
+        }, 500);
+    });
+    return 0;
+}
+ */
