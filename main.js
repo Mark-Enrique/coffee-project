@@ -39,7 +39,7 @@ function updateCoffees(e) {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-    let text = ["Mark & Enrique's Coffee Project"];
+    let text = ["<em>Mark & Enrique's Coffee Project</em>"];
     let counter = 0;
     let elem = document.getElementById("coffee-title");
     let background = document.getElementById("coffee-background");
