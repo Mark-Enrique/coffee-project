@@ -1,17 +1,16 @@
 "use strict"
 
 function renderCoffee(coffee) {
-    var html = '<div class="coffee col-6">';
-    html += '<div><h4>' + coffee.name + '</h4>';
-    html += '<span>' + coffee.roast + '</span></div>';
+    var html = '<div class="coffee col-6 pb-5">';
+    html += '<span class="font-weight-bold text-capitalize coffee-name">' + coffee.name + '</span>';
+    html += '<span class="text-secondary pl-2 coffee-roast">' + coffee.roast + '</span></div>';
     html += '</div>';
-
     return html;
 }
 
 function renderCoffees(coffees) {
     var html = '';
-    for(var i = 0; i < coffees.length; i++) {
+    for (var i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -19,27 +18,22 @@ function renderCoffees(coffees) {
 
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
+    // var timeout = null;
+    // clearTimeout(timeout);
     var selectedRoast = roastSelection.value;
     var filteredCoffees = [];
+    var coffeeName = new RegExp('^' + search.value.toLowerCase())
     coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
-            filteredCoffees.push(coffee);
-        } else if (coffee.all === selectedRoast) {
-            filteredCoffees.push(coffee);
-        }
-    });
-    tbody.innerHTML = renderCoffees(filteredCoffees);
-}
-
-function updateCoffeesSearch(e) {
-    //e.preventDefault(); // don't submit the form, we just want to update the data
-    var selectedRoast = roastSelection.value;
-    var filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        if (coffee.roast === selectedRoast) {
-            filteredCoffees.push(coffee);
-        } else if (coffee.all === selectedRoast) {
-            filteredCoffees.push(coffee);
+        var coffeeToLower = coffee.name.toLowerCase();
+        var coffeeNameSplit = coffeeToLower.split(' ');
+        for (var i = 0; i < coffeeNameSplit.length; i += 1){
+            if ((coffee.roast === selectedRoast ||
+                coffee.all === selectedRoast) &&
+                (coffeeNameSplit[i].search(coffeeName) > -1))
+            {
+                filteredCoffees.push(coffee);
+                break;
+            }
         }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
@@ -66,49 +60,10 @@ var coffees = [
 var tbody = document.querySelector('#coffees');
 var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
+var search = document.querySelector("#coffee-name-search");
 
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
 roastSelection.addEventListener('change', updateCoffees)
-
-var search = document.getElementById("coffee-name-search");
-
-search.addEventListener("keyup", updateCoffeesSearch)
-
-
-//
-// console.log(searchTest());
-
-// search.addEventListener("keyup", function() {
-//     coffees.prototype.forEach.call(els, function(el) {
-//         var values = search.value.split(' ');
-//         var display = true;
-//         for (var i = 0; i < values.length; i++) {
-//             if(el.textContent.trim().indexOf(values[i]) === -1)
-//                 display = false;
-//         }
-//
-//         el.style.display = display ? 'block' : 'none';
-//     });
-// });
-
-
-
-/* Test function
-
-var timeout = null;
-// Init a timeout variable to be used below
-
-//Listen for keystroke events
-function searchTest() {
-    search.addEventListener("keydown", function () {
-
-        clearTimeout(timeout);
-        timeout = setTimeout(function () {
-            console.log('Input Value:', search.value);
-        }, 500);
-    });
-    return 0;
-}
- */
+search.addEventListener("keyup", updateCoffees)

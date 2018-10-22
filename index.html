@@ -7,12 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 
     <title>Coffee Project</title>
 </head>
 <body>
-<h1 class="text-center">Coffee!</h1>
-<hr>
+<h1 class="text-center p-3">Coffee!</h1>
+<hr class="pb-3">
 
 <div class="container">
     <div class="row">
@@ -22,31 +24,31 @@
     <div class="col-sm-6">
 <!------------------------top form--------------------------->
             <form>
-                <label for="roast-selection">Roast</label><br>
+                <label for="roast-selection" class="font-weight-bold pb-1">Roast</label><br>
                 <select class="custom-select" id="roast-selection">
                     <option>all</option>
                     <option>light</option>
                     <option>medium</option>
                     <option>dark</option>
                 </select><br><br>
-                <label for="coffee-name-search">Coffee Name</label>
+                <label for="coffee-name-search" class="font-weight-bold">Coffee Name</label>
                 <br>
                 <input class="input-group" id="coffee-name-search" type="text" name="coffee-name-search">
                 <br>
                 <input class="btn btn-primary btn-block" id="submit" type="submit">
                 <br><br>
-            </form>
+            </form><hr>
 <!--------------------bottom form------------------------>
             <form>
                 <div class="text-center"><h3>Add a Coffee</h3></div>
-                <label for="roast-selection-bottom">Roast</label><br>
+                <label for="roast-selection-bottom" class="font-weight-bold pb-1">Roast</label><br>
                 <select class="custom-select" id="roast-selection-bottom">
                     <option>all</option>
                     <option>light</option>
                     <option>medium</option>
                     <option>dark</option>
                 </select><br><br>
-                <label for="coffee-name-search-bottom">Coffee Name</label><br>
+                <label for="coffee-name-search-bottom" class="font-weight-bold">Coffee Name</label><br>
                 <input class="input-group" id="coffee-name-search-bottom" type="text" name="coffee-name-search"><br>
                 <input class="btn btn-primary btn-block" id="submit-bottom" type="submit">
             </form>

@@ -8,6 +8,10 @@ td, th {
     padding: 5px 10px;
 }
 
-p {
-    color: grey;
+.coffee-name {
+    font-size: 1.7rem;
+}
+
+.coffee-roast {
+    font-size: 1.1rem;
 }
