@@ -1,7 +1,8 @@
-"use strict"
+(function () {
+"use strict";
 
 function renderCoffee(coffee) {
-    var html = '<div class="coffee col-6 pb-5">';
+    let html = '<div class="coffee col-6 pb-5">';
     html += '<span class="font-weight-bold text-capitalize coffee-name">' + coffee.name + '</span>';
     html += '<span class="text-secondary pl-2 coffee-roast">' + coffee.roast + '</span></div>';
     html += '</div>';
@@ -9,8 +10,8 @@ function renderCoffee(coffee) {
 }
 
 function renderCoffees(coffees) {
-    var html = '';
-    for (var i = 0; i < coffees.length; i++) {
+    let html = '';
+    for (let i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -18,15 +19,14 @@ function renderCoffees(coffees) {
 
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
-    // var timeout = null;
-    // clearTimeout(timeout);
-    var selectedRoast = roastSelection.value;
-    var filteredCoffees = [];
-    var coffeeName = new RegExp('^' + search.value.toLowerCase())
+    // add timeout on keystroke search, 500
+    let selectedRoast = roastSelection.value;
+    let filteredCoffees = [];
+    let coffeeName = new RegExp('^' + search.value.toLowerCase());
     coffees.forEach(function(coffee) {
-        var coffeeToLower = coffee.name.toLowerCase();
-        var coffeeNameSplit = coffeeToLower.split(' ');
-        for (var i = 0; i < coffeeNameSplit.length; i += 1){
+        let coffeeToLower = coffee.name.toLowerCase();
+        let coffeeNameSplit = coffeeToLower.split(' ');
+        for (let i = 0; i < coffeeNameSplit.length; i += 1) {
             if ((coffee.roast === selectedRoast ||
                 coffee.all === selectedRoast) &&
                 (coffeeNameSplit[i].search(coffeeName) > -1))
@@ -39,8 +39,24 @@ function updateCoffees(e) {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+    let text = ["Mark & Enrique's Coffee Project"];
+    let counter = 0;
+    let elem = document.getElementById("coffee-title");
+    let background = document.getElementById("coffee-background");
+    let inst = setInterval(change, 10000);
+
+    function change() {
+        elem.innerHTML = text[counter];
+        background.style.background = "linear-gradient(to right, #f7f8f8, #acbb78)";
+        counter++;
+        if (counter >= text.length) {
+            counter = 0;
+            clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
+        }
+    }
+
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
-var coffees = [
+let coffees = [
     {id: 1, name: 'Light City', roast: 'light', all: 'all'},
     {id: 2, name: 'Half City', roast: 'light', all: 'all'},
     {id: 3, name: 'Cinnamon', roast: 'light', all: 'all'},
@@ -57,13 +73,14 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark', all: 'all'},
 ];
 
-var tbody = document.querySelector('#coffees');
-var submitButton = document.querySelector('#submit');
-var roastSelection = document.querySelector('#roast-selection');
-var search = document.querySelector("#coffee-name-search");
-
-tbody.innerHTML = renderCoffees(coffees);
+let tbody = document.querySelector('#coffees');
+let submitButton = document.querySelector('#submit');
+let roastSelection = document.querySelector('#roast-selection');
+let search = document.querySelector("#coffee-name-search");
 
 submitButton.addEventListener('click', updateCoffees);
-roastSelection.addEventListener('change', updateCoffees)
-search.addEventListener("keyup", updateCoffees)
+roastSelection.addEventListener('change', updateCoffees);
+search.addEventListener("keyup", updateCoffees);
+
+tbody.innerHTML = renderCoffees(coffees);
+})();

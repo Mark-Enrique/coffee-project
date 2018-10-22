@@ -12,8 +12,8 @@
 
     <title>Coffee Project</title>
 </head>
-<body>
-<h1 class="text-center p-3">Coffee!</h1>
+<body id="coffee-background">
+<h1 id="coffee-title" class="text-center p-3">Coffee!</h1>
 <hr class="pb-3">
 
 <div class="container">
@@ -23,7 +23,7 @@
         </div>
     <div class="col-sm-6">
 <!------------------------top form--------------------------->
-            <form>
+            <form action="/" method="post" enctype="multipart/form-data">
                 <label for="roast-selection" class="font-weight-bold pb-1">Roast</label><br>
                 <select class="custom-select" id="roast-selection">
                     <option>all</option>
@@ -39,7 +39,7 @@
                 <br><br>
             </form><hr>
 <!--------------------bottom form------------------------>
-            <form>
+            <form action="/" method="post" enctype="multipart/form-data">
                 <div class="text-center"><h3>Add a Coffee</h3></div>
                 <label for="roast-selection-bottom" class="font-weight-bold pb-1">Roast</label><br>
                 <select class="custom-select" id="roast-selection-bottom">
